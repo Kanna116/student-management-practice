@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="submitForm" method="post">
-    <h1 class="title">Student Adding Form</h1>
+  <form @submit.prevent="updateStudent" method="post">
+    <h1 class="title">Student Updating Form</h1>
     <div class="form-input">
       <label for="firstName">First Name *</label>
       <input type="text" name="firstName" id="firstName" v-model="formData.firstName" />
@@ -42,6 +42,7 @@
 export default {
   data() {
     return {
+      studentId: null,
       formData: {
         firstName: '',
         lastName: '',
@@ -52,11 +53,23 @@ export default {
       }
     }
   },
+  mounted() {
+    this.studentId = this.$route.params.id
+    this.fetchStudentData(this.studentId)
+  },
   methods: {
-    submitForm() {
-    //   console.log(this.formData);
-      fetch('https://666419f0932baf9032a9f886.mockapi.io/api/students', {
-        method: 'POST',
+    fetchStudentData(id) {
+      fetch(`https://666419f0932baf9032a9f886.mockapi.io/api/students/${id}`)
+        .then((res) => res.json())
+        .then((res) => {
+          this.formData = res
+        })
+        .catch((err) => console.log(err.message))
+    },
+    updateStudent() {
+      //   console.log(this.formData);
+      fetch(`https://666419f0932baf9032a9f886.mockapi.io/api/students/${this.studentId}`, {
+        method: 'PUT',
         body: JSON.stringify({
           firstName: this.formData.firstName,
           lastName: this.formData.lastName,
@@ -71,16 +84,9 @@ export default {
       })
         .then((res) => res.json())
         .then((result) => {
-        //   console.log(result)
-          alert('Successfully added the new Student data')
-          this.formData = {
-            firstName: '',
-            lastName: '',
-            age: '',
-            gender: '',
-            email: '',
-            phone: ''
-          }
+          // console.log(result)
+          alert('Successfully updated the Student data')
+          this.$router.push('/student');
         })
         .catch((err) => console.log(err))
     }
