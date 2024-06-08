@@ -3,36 +3,36 @@
     <h1 class="title">Student Adding Form</h1>
     <div class="form-input">
       <label for="firstName">First Name *</label>
-      <input type="text" name="firstName" id="firstName" v-model="formData.firstName" />
+      <input type="text" name="firstName" id="firstName" v-model="formData.firstName" required/>
     </div>
     <div class="form-input">
       <label for="lastName">Last Name *</label>
-      <input type="text" name="lastName" id="lastName" v-model="formData.lastName" />
+      <input type="text" name="lastName" id="lastName" v-model="formData.lastName" required/>
     </div>
     <div class="form-input double-inputs">
       <div class="option-input">
         <label for="age">Age *</label>
-        <input type="number" name="age" id="age" v-model="formData.age" />
+        <input type="number" name="age" id="age" v-model="formData.age" required/>
       </div>
       <div class="option-input radios">
         <label for="gender">Gender *</label>
         <div class="radio-btns">
-          <input type="radio" value="male" name="gender" id="male" v-model="formData.gender" />
+          <input type="radio" value="male" name="gender" id="male" v-model="formData.gender"  required/>
           <label for="male">Male</label>
-          <input type="radio" value="female" name="gender" id="female" v-model="formData.gender" />
+          <input type="radio" value="female" name="gender" id="female" v-model="formData.gender" required/>
           <label for="female">Female</label>
-          <input type="radio" value="other" name="gender" id="other" v-model="formData.gender" />
+          <input type="radio" value="other" name="gender" id="other" v-model="formData.gender" required/>
           <label for="other">Other</label>
         </div>
       </div>
     </div>
     <div class="form-input">
       <label for="name">Email *</label>
-      <input type="email" name="name" id="name" v-model="formData.email" />
+      <input type="email" name="name" id="name" v-model="formData.email" required/>
     </div>
     <div class="form-input">
       <label for="name">Phone *</label>
-      <input type="numbder" name="name" id="name" v-model="formData.phone" />
+      <input type="numbder" name="name" id="name" v-model="formData.phone" required />
     </div>
     <button>Submit</button>
   </form>
@@ -97,7 +97,7 @@ form {
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 20px;
+  margin: 20px auto 0px;
 }
 form .form-input,
 .option-input {
