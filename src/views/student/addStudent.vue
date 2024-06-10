@@ -70,7 +70,7 @@ export default {
         }
       })
         .then((res) => res.json())
-        .then((result) => {
+        .then(() => {
         //   console.log(result)
           alert('Successfully added the new Student data')
           this.formData = {

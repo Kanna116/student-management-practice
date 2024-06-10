@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="updateStudent" method="post">
+<form @submit.prevent="updateStudent" method="post">
     <h1 class="title">Student Updating Form</h1>
     <div class="form-input">
       <label for="firstName">First Name *</label>
@@ -83,8 +83,7 @@ export default {
         }
       })
         .then((res) => res.json())
-        .then((result) => {
-          // console.log(result)
+        .then(() => {
           alert('Successfully updated the Student data')
           this.$router.push('/student');
         })

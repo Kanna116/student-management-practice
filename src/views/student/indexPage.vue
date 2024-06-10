@@ -65,7 +65,7 @@ export default {
           method: 'DELETE'
         })
           .then((res) => res.json())
-          .then((res) => {
+          .then(() => {
             this.getAllStudents()
             alert('Successfully removed the student from the data')
           })
